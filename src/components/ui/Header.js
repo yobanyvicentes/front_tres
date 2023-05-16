@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { LogoutButton } from '../auth0/LogoutButton';
 
 export const Header = () => {
   return (
@@ -21,6 +22,9 @@ export const Header = () => {
               <NavLink className="nav-link" activeClassName='Active' exact aria-current="page" to="/estadoEquipos">Estados</NavLink>
             </li>
           </ul>
+        </div>
+        <div className='logout'>
+          <LogoutButton/>
         </div>
       </div>
     </nav>
