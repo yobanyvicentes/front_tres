@@ -10,7 +10,7 @@ export const UsuarioUpdate = () => {
     const [usuario, setUsuario] = useState({});
 
     const [valoresform, setValoresform] = useState({});
-    const { nombre = '', email = '', estado = '' } = valoresform;
+    const { nombre = '', email = '', rol ='', estado = '' } = valoresform;
 
     const getUsuario = async () => {
         try {
@@ -37,6 +37,7 @@ export const UsuarioUpdate = () => {
         setValoresform({
             nombre: usuario.nombre,
             email: usuario.email,
+            rol: usuario.rol,
             estado: usuario.estado,
         });
     }, [usuario])
@@ -45,6 +46,7 @@ export const UsuarioUpdate = () => {
         e.preventDefault();
         const usuarioModel = {
             nombre,
+            rol,
             email,
             estado
         }
@@ -87,7 +89,7 @@ export const UsuarioUpdate = () => {
                                     <h5>Actualizar Usuario</h5>
                                 </div>
                                 <div className='row'>
-                                    <div className='col-md-4'>
+                                    <div className='col-md-3'>
                                         <div className='mb-3'>
                                             <label className='form-label' for='nombreid'>Nombre</label>
                                             <input className='form-control' type="text" name="nombre" value={nombre} id='nombreid' required
@@ -97,7 +99,7 @@ export const UsuarioUpdate = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className='col-md-4'>
+                                    <div className='col-md-3'>
                                         <div className='mb-3'>
                                             <label className='form-label' for='emailid'>Email</label>
                                             <input className='form-control' type="text" name="email" value={email} id='emailid' required
@@ -107,7 +109,21 @@ export const UsuarioUpdate = () => {
                                             />
                                         </div>
                                     </div>
-                                    <div className='col-md-4'>
+                                    <div className='col-md-2'>
+                                        <div className='mb-3'>
+                                            <label className='form-label' for='rolid'>Rol</label>
+                                            <select className='form-select' name="rol" value={rol} id='rolid' required
+                                                onChange={(e) => {
+                                                    handleOnChange(e);
+                                                }}
+                                            >
+                                                <option selected>--Seleccione--</option>
+                                                <option value="admin">admin</option>
+                                                <option value="normal">normal</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div className='col-md-2'>
                                         <div className='mb-3'>
                                             <label className='form-label' for='estadoid'>Estado</label>
                                             <select className='form-select' name="estado" value={estado} id='estadoid' required
