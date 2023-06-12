@@ -9,15 +9,16 @@ import Swal from 'sweetalert2';
 
 export const InventarioUpdate = () => {
 
-    const {inventarioId = ''} = useParams();
+    let {inventarioId = ''} = useParams();
     const [inventario, setInventario] = useState({});
+
     const [usuarios, setUsuarios] = useState([]);
     const [marcas, setMarcas] = useState([]);
     const [tipos, setTipos] = useState([]);
     const [estados, setEstados] = useState([]);
 
     const [valoresform, setValoresform] = useState({});
-    const { serial = '', modelo = '', descripcion = '', color = '', foto = '', fechaCompra = '', precio = '', usuario, marca, estadoEquipo, tipoEquipo } = valoresform;
+    const { serial = '', modelo = '', descripcion = '', color = '', foto = '', fechaCompra = '', precio = '', usuario,    marca, estadoEquipo, tipoEquipo } = valoresform;
 
     const listarUsuarios = async () => {
         try {
@@ -29,7 +30,6 @@ export const InventarioUpdate = () => {
     }
     useEffect(() => {
         listarUsuarios();
-        console.log(getUsuarios());
     }, []);
 
     const listarMarcas = async () => {
@@ -67,6 +67,7 @@ export const InventarioUpdate = () => {
     useEffect(() => {
         listarTipos();
     }, []);
+
     const getInventario = async () => {
         try {
             Swal.fire({
@@ -113,6 +114,7 @@ export const InventarioUpdate = () => {
             const {data} = await putInventarios(inventarioId, inventarioModel);
             console.log(data);
             Swal.close();
+            
           } catch (error) {
             console.log("error al actualizar el inventario");
             Swal.close();
@@ -241,7 +243,7 @@ export const InventarioUpdate = () => {
                                                 onChange={(e) => {
                                                     handleOnChange(e);
                                                 }}
-                                                type="date"
+                                                type="text"
                                                 name='fechaCompra'
                                                 className="form-control"
                                                 id="fechacompraid" />
@@ -270,7 +272,7 @@ export const InventarioUpdate = () => {
                                                 className="form-select"
                                                 onChange={(e) => handleOnChange(e)}
                                                 name='usuario'
-                                                value={usuario}
+                                                value={usuario._id}
                                             >
                                                 <option selected> --escoge un usuario--</option>
                                                 {usuarios.map((usuario) => {
@@ -289,7 +291,7 @@ export const InventarioUpdate = () => {
                                                 className="form-select"
                                                 onChange={(e) => handleOnChange(e)}
                                                 name='marca'
-                                                value={marca}>
+                                                value={marca._id}>
                                                 <option selected> --escoge una marca--</option>
                                                 {marcas.map((marca) => {
                                                     return (<option key={marca._id} value={marca._id}>{marca.nombre}</option>)
@@ -304,7 +306,7 @@ export const InventarioUpdate = () => {
                                                 required
                                                 onChange={(e) => handleOnChange(e)}
                                                 name='tipoEquipo'
-                                                value={tipoEquipo}>
+                                                value={tipoEquipo._id}>
                                                 <option selected> --escoge un tipo--</option>
                                                 {tipos.map((tipo) => {
                                                     return (<option key={tipo._id} value={tipo._id}>{tipo.nombre}</option>)
@@ -319,7 +321,7 @@ export const InventarioUpdate = () => {
                                                 required
                                                 onChange={(e) => handleOnChange(e)}
                                                 name='estadoEquipo'
-                                                value={estadoEquipo}>
+                                                value={estadoEquipo._id}>
                                                 <option selected> --escoge un estado--</option>
                                                 {estados.map((estado) => {
                                                     return (<option key={estado._id} value={estado._id}>{estado.nombre}</option>)
