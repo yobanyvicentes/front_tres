@@ -14,7 +14,7 @@ export const TipoEquipoView = () => {
         allowOutsideClick: false,
         title: 'Cargando....',
         text: 'Por favor espere',
-        timer: 2000//milisegundos
+        timer: 1000//milisegundos
       });
       Swal.showLoading();
       const { data } = await getTipoEquipos();
