@@ -24,3 +24,28 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.card{
+    box-shadow: 0px 8px 8px lightgrey;
+}
+
+.card:hover{
+    box-shadow: 0px 8px 8px grey;
+}
+
+.inventario{
+    height: 380px;
+}
+
+.card img{
+margin: auto;
+height: 200px;
+width: 200px;
+}
+.card .card-title{
+    margin: 0px;
+}
+
+.card .card-text{
+    margin: 0px;
+}
