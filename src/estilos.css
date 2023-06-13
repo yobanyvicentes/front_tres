@@ -49,3 +49,27 @@ width: 200px;
 .card .card-text{
     margin: 0px;
 }
+
+.profile{
+    display: flex;
+    color: white;
+}
+.profile p{
+    height: 30px;
+    vertical-align: middle;
+    margin: auto 5px 0px 5px;
+}
+
+.profile img{
+    height: 25px;
+    width: 25px;
+    vertical-align: middle;
+    margin: auto 10px auto 5px;
+}
+
+.logout{
+    font-size: 12px;
+    background-color: white;
+    color: black;
+    border-color: black;
+}

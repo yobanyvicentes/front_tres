@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { LogoutButton } from '../auth0/LogoutButton';
+import { Profile } from '../auth0/Profile'
 
 export const Header = () => {
   return (
@@ -26,7 +27,10 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-        <div className='logout'>
+        <div>
+          <Profile/>
+        </div>
+        <div>
           <LogoutButton/>
         </div>
       </div>

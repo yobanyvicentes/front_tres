@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 
-import { LoginButton } from './components/auth0/LoginButton';
 import { Header } from './components/ui/Header';
 
 import {InventarioView} from './components/inventarios/InventarioView';
@@ -16,6 +15,7 @@ import { EstadoEquipoUpdate } from './components/estados/EstadoEquipoUpdate';
 import { TipoEquipoUpdate } from './components/tipos/TipoEquipoUpdate';
 import { MarcaUpdate } from './components/marcas/MarcaUpdate';
 
+import { LoginButton } from './components/auth0/LoginButton';
 import { useAuth0 } from "@auth0/auth0-react";
 
 
