@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 import { getUsuarios } from '../../services/usuarioService';
 import { getEstadoEquipos } from '../../services/estadoEquipoService';
@@ -6,6 +7,7 @@ import { getMarcas } from '../../services/marcaService';
 import { getTipoEquipos } from '../../services/tipoEquipoService';
 import { getInventariosById, putInventarios } from '../../services/inventarioService';
 import Swal from 'sweetalert2';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 export const InventarioUpdate = () => {
 
@@ -74,11 +76,22 @@ export const InventarioUpdate = () => {
                 allowOutsideClick: false,
                 title: 'Cargando....',
                 text: 'Por favor espere',
-                timer: 5000//milisegundos
+                timer: 3000//milisegundos
               });
               Swal.showLoading();
               Swal.close();
-            const { data } = await getInventariosById(inventarioId);
+            let { data } = await getInventariosById(inventarioId);
+            console.log(data);
+            let { usuario, marca, estadoEquipo, tipoEquipo} = data;
+            let idUser = usuario._id;
+            let idMarca = marca._id;
+            let idEstado = estadoEquipo._id;
+            let idTipo = tipoEquipo._id;
+            data.usuario = idUser;
+            data.marca= idMarca;
+            data.estadoEquipo = idEstado;
+            data.tipoEquipo = idTipo;
+            console.log(data);
             setInventario(data);
         } catch (error) {
             Swal.close();
@@ -114,7 +127,7 @@ export const InventarioUpdate = () => {
             const {data} = await putInventarios(inventarioId, inventarioModel);
             console.log(data);
             Swal.close();
-
+            Redirect(`/`);
           } catch (error) {
             console.log("error al actualizar el inventario");
             Swal.close();
@@ -243,7 +256,7 @@ export const InventarioUpdate = () => {
                                                 onChange={(e) => {
                                                     handleOnChange(e);
                                                 }}
-                                                type="local"
+                                                type="date"
                                                 name='fechaCompra'
                                                 className="form-control"
                                                 id="fechacompraid" />
@@ -274,7 +287,7 @@ export const InventarioUpdate = () => {
                                                 name='usuario'
                                                 value={usuario}
                                             >
-                                                <option selected> --escoge un usuario--</option>
+                                                <option> --escoge un usuario--</option>
                                                 {usuarios.map((usuario) => {
                                                     return (<option key={usuario._id} value={usuario._id}>{usuario.nombre}</option>)
                                                 })}
@@ -336,7 +349,9 @@ export const InventarioUpdate = () => {
                                 </div>
                                 <div className='row'>
                                     <div className='col'>
-                                        <button type="onSubmit" className='btn btn-primary'>Actualizar</button>
+                                        <Link type='onSubmit' className='btn btn-primary' to={`../`}  onClick={handleOnSubmit}>
+                                            Actualizar
+                                        </Link>
                                     </div>
                                 </div>
                             </form>
