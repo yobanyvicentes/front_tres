@@ -29,12 +29,18 @@
     box-shadow: 0px 8px 8px lightgrey;
 }
 
+.card-container{
+    height: 380px;
+    min-width: 250px;
+}
+
 .card:hover{
     box-shadow: 0px 8px 8px grey;
 }
 
 .inventario{
     height: 380px;
+    min-width: 220px;
 }
 
 .card img{

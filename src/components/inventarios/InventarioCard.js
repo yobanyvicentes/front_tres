@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export const InventarioCard = (props)  => {
   const {inventario} = props;
   return (
-    <div className="col" key={inventario._id}>
+    <div className="col card-container" key={inventario._id}>
       <div className="card inventario">
         <img src={inventario.foto} className="card-img-top" alt={inventario.foto} />
         <div className="card-body">

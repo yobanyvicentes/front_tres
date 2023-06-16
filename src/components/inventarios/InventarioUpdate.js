@@ -131,7 +131,7 @@ export const InventarioUpdate = () => {
           } catch (error) {
             console.log("error al actualizar el inventario");
             Swal.close();
-            Swal.fire('Error', '"error al actualizar el inventario')
+            Swal.fire('Error', 'error al actualizar el inventario')
           }
     }
 
